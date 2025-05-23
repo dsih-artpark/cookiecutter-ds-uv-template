@@ -1,0 +1,59 @@
+metadata:
+  project_name: "{{ cookiecutter.project_slug }}"
+  version: "v0.1.0"
+  author: "{{ cookiecutter.author_name }}"
+  description: "Brief summary of this experimental configuration."
+  tags: []
+
+random_seed: 42
+
+data:
+  sources:
+    - id: "main_data"
+      path: "data/raw/main.csv"
+      format: "csv"
+      description: "Primary dataset for modelling."
+    - id: "external_data"
+      path: "data/external/extra.xlsx"
+      format: "excel"
+      description: "External dataset used for validation or enrichment."
+
+  outputs:
+    base_dir: ""
+    files:
+      - id: ""
+        path: ""
+        description: "Aggregated results across models."
+
+models:
+  - id: "trend_model"
+    description: "A simple trend model using seasonal decomposition."
+    script: "src/{{ cookiecutter.package_name }}/models/trend.py"
+    parameters:
+      window_size: 7
+      detrend: "moving_average"
+      seasonality: "weekly"
+      forecast_horizon: 30
+
+  - id: "regression_model"
+    description: "Linear regression with time-based features."
+    script: "src/{{ cookiecutter.package_name }}/models/regression.py"
+    parameters:
+      features: ["day_of_week", "lag_1", "lag_7"]
+      target: "y"
+      regularisation: false
+
+  - id: "custom_model"
+    description: "Custom spatial interpolation model."
+    script: "src/{{ cookiecutter.package_name }}/models/interpolate.py"
+    parameters: ""
+
+notes:
+  purpose: >
+    Briefly state the main goal or hypothesis behind this run or experiment.
+  changes_from_previous_version: >
+    Summarise key differences or parameter updates compared to previous versions.
+  known_issues: >
+    List any known limitations, bugs, or data quality concerns.
+  next_steps: >
+    Outline possible follow-up experiments, analyses, or improvements.
