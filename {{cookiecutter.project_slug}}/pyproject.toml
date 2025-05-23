@@ -11,7 +11,10 @@ dependencies = [
   "geopandas>=1.0.1",
   "matplotlib>=3.10.3",
   "pyyaml>=6.0.2",
-  "ruff"
+  "ruff",
+  "typer",
+  "tqdm",
+  "scikit-learn",
 ]
 
 [tool.ruff.lint]
