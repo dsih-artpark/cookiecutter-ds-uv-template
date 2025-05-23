@@ -14,8 +14,8 @@ dependencies = [
   "ruff"
 ]
 
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "FLY", "RUF", "B", "ICN"]
+
 [tool.ruff]
-line-length = 120
-select = ["E", "F", "W", "I"]
-ignore = ["E501"]
-target-version = "py311"
+line-length = 140

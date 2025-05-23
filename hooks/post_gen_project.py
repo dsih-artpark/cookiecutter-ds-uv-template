@@ -6,6 +6,9 @@ import yaml
 
 print("Project created successfully!")
 
+# Optional: install packages automatically
+subprocess.run("uv pip install -r pyproject.toml", shell=True, check=True)
+
 # Add creation date to config.yaml
 project_dir = os.getcwd()
 config_path = os.path.join(project_dir, "config.yaml")
@@ -30,6 +33,3 @@ print("  source .venv/bin/activate on Linux/Mac  # or .\\.venv\\Scripts\\activat
 print(" uv add <package_name>  # to add a package")
 print(" uv run <script_name>  # to run a script")
 print("Happy modelling! 🎉")
-
-# Optional: install packages automatically
-subprocess.run("uv pip install -r pyproject.toml", shell=True, check=True)
