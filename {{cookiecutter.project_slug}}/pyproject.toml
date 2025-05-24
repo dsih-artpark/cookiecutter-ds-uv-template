@@ -8,10 +8,11 @@ requires-python = ">=3.11"
 dependencies = [
   "numpy",
   "pandas",
-  "geopandas>=1.0.1",
-  "matplotlib>=3.10.3",
-  "pyyaml>=6.0.2",
+  "geopandas",
+  "matplotlib",
+  "pyyaml",
   "ruff",
+  "pre-commit",
   "typer",
   "tqdm",
   "scikit-learn",
@@ -19,6 +20,8 @@ dependencies = [
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "FLY", "RUF", "B", "ICN"]
+ignore = []
 
 [tool.ruff]
 line-length = 140
+indent-width = 4
