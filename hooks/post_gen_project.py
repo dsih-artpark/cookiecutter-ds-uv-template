@@ -3,6 +3,7 @@ import subprocess
 import datetime
 import yaml
 
+
 def run_cmd(cmd, silent=False):
     try:
         if silent:
@@ -12,6 +13,7 @@ def run_cmd(cmd, silent=False):
         return True
     except subprocess.CalledProcessError:
         return False
+
 
 def ensure_git_repo():
     if not os.path.exists(".git"):
@@ -23,12 +25,20 @@ def ensure_git_repo():
     else:
         print("✅ Git repository found.")
 
+
 def install_dependencies():
     print("📦 Installing project dependencies using `uv sync`...")
     if run_cmd("uv sync"):
         print("✅ Dependencies installed.")
     else:
         print("⚠️ Failed to install dependencies. Please run `uv sync` manually.")
+    
+    print("📚 Installing documentation dependencies...")
+    if run_cmd("uv pip install mkdocs mkdocs-material mkdocstrings mkdocstrings-python pymdown-extensions"):
+        print("✅ Documentation dependencies installed.")
+    else:
+        print("⚠️ Failed to install documentation dependencies. Please run `uv pip install mkdocs mkdocs-material mkdocstrings mkdocstrings-python pymdown-extensions` manually.")
+
 
 def update_config_created_date():
     config_path = os.path.join(os.getcwd(), "config.yaml")
@@ -43,12 +53,13 @@ def update_config_created_date():
             yaml.safe_dump(config, f)
         print("🗓️  Added project creation date to config.yaml.")
 
+
 def print_final_instructions():
     project_dir_name = os.path.basename(os.getcwd())
     print(f"""
-    🎉 Project setup complete! Here’s how to get started:
+    🎉 Project setup complete! Here's how to get started:
 
-    1. Change directory into your project (if you aren’t already):
+    1. Change directory into your project (if you aren't already):
         cd {project_dir_name}
 
     2. Activate your virtual environment:
@@ -64,6 +75,9 @@ def print_final_instructions():
     5. To run scripts, use:
         uv run python <script.py>
 
+    6. To serve documentation:
+        mkdocs serve
+
     Happy modelling! 🚀
     """)
 
@@ -74,6 +88,7 @@ def main():
     install_dependencies()
     update_config_created_date()
     print_final_instructions()
+
 
 if __name__ == "__main__":
     main()

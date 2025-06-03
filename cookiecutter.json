@@ -3,6 +3,6 @@
   "description": "A data science project template",
   "project_slug": "data_science_project",
   "package_name": "data_science_package",
-  "author_name": "Adish",
+  "author_name": "Author Name",
   "python_version": "3.11"
 }
