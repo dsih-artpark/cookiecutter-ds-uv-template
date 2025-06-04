@@ -1,8 +1,8 @@
 {
+  "package_name": "data_science_package",
+  "project_slug": "{{ cookiecutter.package_name }}",
   "project_name": "Data Science Project",
   "description": "A data science project template",
-  "project_slug": "data_science_project",
-  "package_name": "data_science_package",
   "author_name": "Author Name",
   "python_version": "3.11"
 }

@@ -1,9 +1,12 @@
 metadata:
-  project_name: "{{ cookiecutter.project_slug }}"
+  project_name: "{{ cookiecutter.project_name }}"
   version: "v0.1.0"
   author: "{{ cookiecutter.author_name }}"
-  description: "Logistic regression example with synthetic data for reproducible research."
+  description: "{{ cookiecutter.description }}"
   tags: ["example", "logistic_regression", "synthetic_data"]
+  python_version: "{{ cookiecutter.python_version }}"
+  package_name: "{{ cookiecutter.package_name }}"
+  project_slug: "{{ cookiecutter.project_slug }}"
 
 random_seed: 42
 
